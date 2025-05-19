@@ -126,10 +126,12 @@ MathBotProject/<br>
 
 ### Шаг 4: Настройте файл .env
 Откройте файл .env в текстовом редакторе (например, Visual Studio Code или Блокнот) и вставьте туда следующие строки:
-TELEGRAM_BOT_TOKEN=ваш_токен_от_BotFather
-OPENROUTER_API_KEY=ваш_ключ_от_OpenRouter
-REFERER_URL=http://localhost
-TITLE_NAME=Math Telegram Bot
+
+    TELEGRAM_BOT_TOKEN=ваш_токен_от_BotFather
+    OPENROUTER_API_KEY=ваш_ключ_от_OpenRouter
+    REFERER_URL=http://localhost
+    TITLE_NAME=Math Telegram Bot
+    
 - Замените ваш_токен_от_BotFather на токен, полученный от BotFather.
 - Замените ваш_ключ_от_OpenRouter на ключ от OpenRouter.
 - REFERER_URL и TITLE_NAME оставьте как есть — они нужны для API.
@@ -144,19 +146,20 @@ TITLE_NAME=Math Telegram Bot
 
 ### Шаг 1: Импортируем библиотеки
 Начнем с импорта необходимых библиотек. Добавьте в начало файла math.py:
-import asyncio
-import logging
-import os
-import json
-import aiohttp
-import random
-from dotenv import load_dotenv
-from aiogram import Bot, Dispatcher, types
-from aiogram.filters import CommandStart, BaseFilter, Command
-from aiogram.enums import ContentType
-from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
-import re
-import base64
+
+    import asyncio
+    import logging
+    import os
+    import json
+    import aiohttp
+    import random
+    from dotenv import load_dotenv
+    from aiogram import Bot, Dispatcher, types
+    from aiogram.filters import CommandStart, BaseFilter, Command
+    from aiogram.enums import ContentType
+    from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeyboardMarkup, KeyboardButton
+    import re
+    import base64<br>
 Объяснение:
 - asyncio — для асинхронного выполнения (бота обрабатывает много запросов одновременно).
 - logging — для записи логов (чтобы видеть ошибки).
@@ -171,16 +174,16 @@ import base64
 ### Шаг 2: Настройка логирования и загрузка переменных
 Добавьте следующий код:
 # Настройка логирования
-logging.basicConfig(level=logging.INFO)
+    logging.basicConfig(level=logging.INFO)
 
 # Загрузка переменных окружения
-load_dotenv(override=True)
-TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
-OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+    load_dotenv(override=True)
+    TELEGRAM_BOT_TOKEN = os.getenv("TELEGRAM_BOT_TOKEN")
+    OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 
 # Инициализация бота и диспетчера
-bot = Bot(token=TELEGRAM_BOT_TOKEN)
-dp = Dispatcher()
+    bot = Bot(token=TELEGRAM_BOT_TOKEN)
+    dp = Dispatcher()
 Объяснение:
 - logging.basicConfig(level=logging.INFO) — включает логирование, чтобы видеть сообщения об ошибках.
 - load_dotenv() — загружает данные из .env.
@@ -190,56 +193,63 @@ dp = Dispatcher()
 ### Шаг 3: Определение регулярного выражения для математики
 Добавьте код для поиска математических выражений:
 # Регулярное выражение для математических выражений
-MATH_REGEX = re.compile(r'[\d+\-*/=^()\[\]{}√π∞∑∫∮∝≠≤≥≈]', re.UNICODE)
+    MATH_REGEX = re.compile(r'[\d+\-*/=^()\[\]{}√π∞∑∫∮∝≠≤≥≈]', re.UNICODE)
 Объяснение:
 - MATH_REGEX ищет в тексте символы, которые могут быть частью математического выражения, например, числа, знаки +, -, или специальные символы вроде √.
 
 ### Шаг 4: Фильтр для фотографий
 Создадим фильтр, чтобы бот понимал, что пользователь отправил фото:
 # Фильтр для фотографий
-class PhotoFilter(BaseFilter):
-    async def __call__(self, message: types.Message) -> bool:
-        return message.content_type == ContentType.PHOTO
+    class PhotoFilter(BaseFilter):
+        async def __call__(self, message: types.Message) -> bool:
+            return message.content_type == ContentType.PHOTO
 Объяснение:
 - PhotoFilter проверяет, является ли сообщение фотографией, чтобы бот мог обрабатывать изображения отдельно.
 
 ### Шаг 5: Темы для обучения
 Определим темы для режима обучения:
 # Темы для обучения
-TOPICS = {
-    "linear": "Решение линейных уравнений",
-    "quadratic": "Решение квадратных уравнений",
-    "cubic": "Решение уравнений 3-й степени",
-    "integrals": "Решение интегралов",
-    "fractions": "Операции с дробями",
-    "exponential": "Решение экспоненциальных уравнений",
-    "logarithms": "Решение логарифмических уравнений"
+
+    TOPICS = {
+          "linear": "Решение линейных уравнений",
+          "quadratic": "Решение квадратных уравнений",
+          "cubic": "Решение уравнений 3-й степени",
+          "integrals": "Решение интегралов",
+          "fractions": "Операции с дробями",
+          "exponential": "Решение экспоненциальных уравнений",
+          "logarithms": "Решение логарифмических уравнений"
 }
 
 # Хранение состояния пользователей
-USER_STATES = {}
+    USER_STATES = {}
 Объяснение:
 - TOPICS — словарь с темами, которые пользователь может выбрать в режиме обучения.
 - USER_STATES — словарь для хранения текущего состояния пользователя (например, какие примеры он решает).
 
 ### Шаг 6: Удаление LaTeX-форматирования
+
 Добавим функцию для очистки ответа от LaTeX-символов:
-def clean_latex(text: str) -> str:
+
+    def clean_latex(text: str) -> str:
     """Удаляет LaTeX-символы и упрощает математические выражения."""
+
     text = re.sub(r'\\[\(\[]|\\[\)\]]', '', text)
     text = re.sub(r'\^{([^}]+)}', r'^\1', text)
     text = re.sub(r'\\frac{([^}]+)}{([^}]+)}', r'\1/\2', text)
     text = re.sub(r'\\sqrt{([^}]+)}', r'sqrt(\1)', text)
     text = text.replace(r'\cdot', '*').replace(r'\times', '*')
     text = text.replace('\\', '')
-    return text.strip()
+    return text.strip()<br>
 Объяснение:
 - Эта функция убирает LaTeX-форматирование (например, \frac{a}{b} превращается в a/b), чтобы ответы были проще для чтения.
 
 ### Шаг 7: Запрос к API нейронной сети
 Добавим функцию для отправки запросов к OpenRouter API:
-async def invoke_llm_api(user_content, image_data=None) -> str:
+
+    async def invoke_llm_api(user_content, image_data=None) -> str:
+
     """Отправляет запрос к OpenRouter API и возвращает ответ."""
+    
     if not OPENROUTER_API_KEY:
         return "Ошибка: Токен OPENROUTER_API_KEY не найден в .env"
 
@@ -301,8 +311,11 @@ async def invoke_llm_api(user_content, image_data=None) -> str:
 
 ### Шаг 8: Загрузка изображений
 Добавим функцию для загрузки изображений из Telegram:
-async def download_image(file_id: str) -> str:
-    """Скачивает изображение из Telegram и возвращает его в формате base64."""
+
+    async def download_image(file_id: str) -> str:
+    
+Скачивает изображение из Telegram и возвращает его в формате base64.
+    
     file = await bot.get_file(file_id)
     file_url = f"https://api.telegram.org/file/bot{TELEGRAM_BOT_TOKEN}/{file.file_path}"
     async with aiohttp.ClientSession() as session:
@@ -311,15 +324,17 @@ async def download_image(file_id: str) -> str:
                 image_data = await response.read()
                 return base64.b64encode(image_data).decode("utf-8")
             logging.error(f"Failed to download image: {response.status}")
-            return None
+            return None<br>
 Объяснение:
 - Функция получает изображение по его file_id, скачивает его и преобразует в base64 для отправки в API.
 
 ### Шаг 9: Генерация примеров для обучения
 Добавим функцию для создания примеров:
 
-def generate_examples(topic: str) -> list:
-    """Генерирует 3 уникальных примера для выбранной темы с возрастающей сложностью."""
+    def generate_examples(topic: str) -> list:
+    
+Генерирует 3 уникальных примера для выбранной темы с возрастающей сложностью.
+    
     examples = []
     answers = []
     
@@ -399,8 +414,11 @@ def generate_examples(topic: str) -> list:
 
 ### Шаг 10: Создание клавиатур
 Добавим функции для создания клавиатур:
-def create_topics_keyboard() -> InlineKeyboardMarkup:
-    """Создает инлайн-клавиатуру с темами для обучения."""
+
+    def create_topics_keyboard() -> InlineKeyboardMarkup:
+    
+Создает инлайн-клавиатуру с темами для обучения.
+
     keyboard = InlineKeyboardMarkup(inline_keyboard=[])
     for topic_id, topic_name in TOPICS.items():
         keyboard.inline_keyboard.append(
@@ -408,8 +426,10 @@ def create_topics_keyboard() -> InlineKeyboardMarkup:
         )
     return keyboard
 
-def create_main_keyboard() -> ReplyKeyboardMarkup:
-    """Создает основную клавиатуру с кнопками 'Обучение' и 'Решение примеров'."""
+    def create_main_keyboard() -> ReplyKeyboardMarkup:
+    
+Создает основную клавиатуру с кнопками 'Обучение' и 'Решение примеров'.
+    
     keyboard = ReplyKeyboardMarkup(
         keyboard=[
             [KeyboardButton(text="Обучение"), KeyboardButton(text="Решение примеров")]
@@ -417,54 +437,66 @@ def create_main_keyboard() -> ReplyKeyboardMarkup:
         resize_keyboard=True,
         one_time_keyboard=False
     )
-    return keyboard
+    return keyboard<br>
 Объяснение:
 - create_topics_keyboard создает инлайн-клавиатуру с темами (появляется при выборе "Обучение").
 - create_main_keyboard создает основную клавиатуру с двумя кнопками, которые всегда видны внизу.
 
 ### Шаг 11: Обработка команды /start
 Добавим обработчик для команды /start:
-@dp.message(CommandStart())
-async def send_welcome(message: types.Message):
-    """Обрабатывает команду /start."""
+
+    @dp.message(CommandStart())
+    async def send_welcome(message: types.Message):
+    
+Обрабатывает команду /start.
+
     keyboard = create_main_keyboard()
     await message.reply(
         "Добро пожаловать в MathBot - ваш помощник в решении примеров! "
         "Этот бот поможет вам освоить математику, решить уравнения и проверить свои знания. "
         "Отправьте выражение, фото или выберите действие ниже:",
         reply_markup=keyboard
-    )
+    )<br>
 Объяснение:
 - Этот обработчик отвечает на команду /start, показывая приветственное сообщение и клавиатуру.
 
 ### Шаг 12: Обработка кнопки "Обучение"
 Добавим обработчик для кнопки "Обучение":
-@dp.message(lambda message: message.text == "Обучение")
-async def learn_command(message: types.Message):
-    """Обрабатывает кнопку 'Обучение' и показывает темы."""
+
+    @dp.message(lambda message: message.text == "Обучение")
+    async def learn_command(message: types.Message):
+    
+Обрабатывает кнопку 'Обучение' и показывает темы.
+
     keyboard = create_topics_keyboard()
-    await message.reply("Выбери тему для обучения:", reply_markup=keyboard)
+    await message.reply("Выбери тему для обучения:", reply_markup=keyboard)<br>
 Объяснение:
 - Когда пользователь нажимает "Обучение", бот показывает инлайн-клавиатуру с темами.
 
 ### Шаг 13: Обработка кнопки "Решение примеров"
 Добавим обработчик для кнопки "Решение примеров":
-@dp.message(lambda message: message.text == "Решение примеров")
-async def solve_examples(message: types.Message):
-    """Обрабатывает кнопку 'Решение примеров'."""
+
+    @dp.message(lambda message: message.text == "Решение примеров")
+    async def solve_examples(message: types.Message):
+    
+Обрабатывает кнопку 'Решение примеров'.
+
     keyboard = create_main_keyboard()
     await message.reply(
         "Отправь математическое выражение или фото с задачей.",
         reply_markup=keyboard
-    )
+    )<br>
 Объяснение:
 - При нажатии "Решение примеров" бот просит пользователя отправить задачу.
 
 ### Шаг 14: Обработка выбора темы
 Добавим обработчик для выбора темы:
-@dp.callback_query(lambda c: c.data.startswith("topic_"))
-async def process_topic_selection(callback: types.CallbackQuery):
-    """Обрабатывает выбор темы и отправляет 3 примера."""
+
+    @dp.callback_query(lambda c: c.data.startswith("topic_"))
+    async def process_topic_selection(callback: types.CallbackQuery):
+    
+Обрабатывает выбор темы и отправляет 3 примера.
+
     topic_id = callback.data.split("_")[1]
     if topic_id not in TOPICS:
         await callback.message.reply("Неверная тема.")
@@ -480,16 +512,19 @@ async def process_topic_selection(callback: types.CallbackQuery):
 
     keyboard = create_main_keyboard()
     await callback.message.reply(message_text, reply_markup=keyboard)
-    await callback.answer()
+    await callback.answer()<br>
 Объяснение:
 - Этот обработчик срабатывает, когда пользователь выбирает тему.
 - Бот генерирует 3 примера и сохраняет их в USER_STATES, чтобы потом проверить ответы.
 
 ### Шаг 15: Обработка фотографий
 Добавим обработчик для фотографий:
-@dp.message(PhotoFilter())
-async def handle_photo(message: types.Message):
-    """Обрабатывает сообщения с фотографиями."""
+
+    @dp.message(PhotoFilter())
+    async def handle_photo(message: types.Message):
+    
+Обрабатывает сообщения с фотографиями.
+
     processing_message = await message.reply("Обрабатываю фото...")
     photo = message.photo[-1]
     image_base64 = await download_image(photo.file_id)
@@ -514,9 +549,11 @@ async def handle_photo(message: types.Message):
 
 ### Шаг 16: Обработка текстовых сообщений
 Добавим обработчик для текстовых сообщений:
-@dp.message()
-async def handle_message(message: types.Message):
-    """Обрабатывает входящие сообщения."""
+
+    @dp.message()
+    async def handle_message(message: types.Message):
+Обрабатывает входящие сообщения.
+
     user_id = message.from_user.id
     keyboard = create_main_keyboard()
 
@@ -567,15 +604,17 @@ async def handle_message(message: types.Message):
 
 ### Шаг 17: Запуск бота
 Добавим функцию для запуска бота:
-async def main():
-    """Запускает бота."""
+
+    async def main():
+Запускает бота.
+
     if not TELEGRAM_BOT_TOKEN:
         logging.error("Telegram bot token not found.")
         return
     await dp.start_polling(bot)
 
-if __name__ == '__main__':
-    asyncio.run(main())
+    if __name__ == '__main__':
+        asyncio.run(main())
 Объяснение:
 - main запускает бота и начинает принимать сообщения.
 - asyncio.run(main()) — точка входа для асинхронного выполнения.
