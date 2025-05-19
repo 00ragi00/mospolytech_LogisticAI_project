@@ -631,10 +631,11 @@ MathBotProject/<br>
    TITLE_NAME=Math Telegram Bot
    
 2. Проверьте работу API OpenRouter. Вы можете отправить тестовый запрос через терминал:
-      curl -X POST https://openrouter.ai/api/v1/chat/completions \
-   -H "Authorization: Bearer ваш_ключ_от_OpenRouter" \
-   -H "Content-Type: application/json" \
-   -d '{"model": "qwen/qwen-2-vl-7b-instruct", "messages": [{"role": "user", "content": "2+2"}]}'
+   
+       curl -X POST https://openrouter.ai/api/v1/chat/completions \
+       -H "Authorization: Bearer ваш_ключ_от_OpenRouter" \
+       -H "Content-Type: application/json" \
+       -d '{"model": "qwen/qwen-2-vl-7b-instruct", "messages": [{"role": "user", "content": "2+2"}]}'
    
    Если вы видите ответ с результатом 4, API работает.
 
@@ -643,14 +644,15 @@ MathBotProject/<br>
 ## Запуск и тестирование бота
 
 1. Активируйте виртуальное окружение, если еще не сделали:
-      venv\Scripts\activate  # На Windows
-   source venv/bin/activate  # На macOS/Linux
    
-2. Запустите бота:
+       venv\Scripts\activate  # На Windows
+       source venv/bin/activate  # На macOS/Linux
+   
+3. Запустите бота:
       python math.py
    
-3. Откройте Telegram, найдите своего бота (например, @MyMathBot123Bot) и отправьте /start.
-4. Попробуйте:
+4. Откройте Telegram, найдите своего бота (например, @MyMathBot123Bot) и отправьте /start.
+5. Попробуйте:
    - Отправить выражение, например, 2x = 4.
    - Отправить фото с задачей.
    - Нажать "Обучение", выбрать тему и решить 3 примера.
