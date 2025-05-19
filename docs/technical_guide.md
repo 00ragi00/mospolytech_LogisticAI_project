@@ -12,10 +12,9 @@
 4. [Написание кода MathBot](#написание-кода-mathbot)
 5. [Настройка API и токенов](#настройка-api-и-токенов)
 6. [Запуск и тестирование бота](#запуск-и-тестирование-бота)
-7. [Архитектура и схемы](#архитектура-и-схемы)
-8. [Что делать, если что-то не работает](#что-делать-если-что-то-не-работает)
-9. [Как улучшить бота](#как-улучшить-бота)
-10. [Заключение](#заключение)
+7. [Что делать, если что-то не работает](#что-делать-если-что-то-не-работает)
+8. [Как улучшить бота](#как-улучшить-бота)
+9. [Заключение](#заключение)
 
 ---
 
@@ -112,7 +111,7 @@ MathBotProject/<br>
    - Введите username бота, заканчивающийся на Bot, например, MyMathBot123Bot.
 4. После создания BotFather даст вам токен, например:
    
-   7227343484:AAFf72XqB8VRAs1JAH-kTcSZtvsvQZpi8XI
+   5338343211:BAGn72BqH98VRAsIJON-mZtTVmqszIOpi8AI
    
    Скопируйте этот токен, он понадобится позже.
 
@@ -121,7 +120,7 @@ MathBotProject/<br>
 2. После регистрации зайдите в раздел "API Keys" (Ключи API).
 3. Создайте новый ключ и скопируйте его, например:
    
-   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
+   sk-or-v1-wergwregwrg5468fgnrfgn6869i123sdbvdsf845rdftgn
    
    Этот ключ даст доступ к модели Qwen2.5-VL 7B Instruct.
 
@@ -616,136 +615,6 @@ if __name__ == '__main__':
    - Отправить выражение, например, 2x = 4.
    - Отправить фото с задачей.
    - Нажать "Обучение", выбрать тему и решить 3 примера.
-
----
-
-## Архитектура и схемы
-
-### Схема 1: Архитектура MathBot
-Ниже приведен код для схемы в формате XML, который можно вставить в [draw.io](https://app.diagrams.net/) для визуализации. Схема показывает, как данные проходят через систему.
-
-<mxfile host="app.diagrams.net" modified="2025-05-19T22:21:00+02:00" agent="5.0 (Windows)">
-  <diagram id="1" name="Архитектура MathBot">
-    <mxGraphModel dx="1000" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100">
-      <root>
-        <mxCell id="0"/>
-        <mxCell id="1" parent="0"/>
-        <mxCell id="2" value="Пользователь" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="50" width="100" height="60" as="geometry"/>
-        </mxCell>
-        <mxCell id="3" value="Telegram Клиент" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="200" y="50" width="100" height="60" as="geometry"/>
-        </mxCell>
-        <mxCell id="4" value="MathBot (Python)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="350" y="50" width="100" height="60" as="geometry"/>
-        </mxCell>
-        <mxCell id="5" value="OpenRouter API (Qwen2.5-VL)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="500" y="50" width="150" height="60" as="geometry"/>
-        </mxCell>
-        <mxCell id="6" value="Ответ пользователю" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="700" y="50" width="100" height="60" as="geometry"/>
-        </mxCell>
-        <mxCell id="7" value="Отправка запроса" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="2" target="3">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="100" y="80" as="sourcePoint"/>
-            <mxPoint x="200" y="80" as="targetPoint"/>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="8" value="Передача данных" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="4">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="250" y="80" as="sourcePoint"/>
-            <mxPoint x="350" y="80" as="targetPoint"/>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="9" value="Запрос к API" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="4" target="5">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="400" y="80" as="sourcePoint"/>
-            <mxPoint x="500" y="80" as="targetPoint"/>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="10" value="Получение ответа" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="5" target="4">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="550" y="80" as="sourcePoint"/>
-            <mxPoint x="450" y="80" as="targetPoint"/>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="11" value="Передача результата" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="4" target="3">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="400" y="80" as="sourcePoint"/>
-            <mxPoint x="300" y="80" as="targetPoint"/>
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="12" value="Показ результата" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="3" target="6">
-          <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="250" y="80" as="sourcePoint"/>
-            <mxPoint x="350" y="80" as="targetPoint"/>
-          </mxGeometry>
-        </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
-</mxfile>
-
-Подробное описание схемы:
-- Пользователь: Человек, который отправляет запрос (например, уравнение или фото) через Telegram.
-- Telegram Клиент: Приложение Telegram на устройстве пользователя.
-- MathBot (Python): Наш бот, который принимает запросы, обрабатывает их и отправляет в API.
-- OpenRouter API (Qwen2.5-VL): Сервер с нейронной сетью, который решает задачу.
-- Ответ пользователю: Итоговый результат, который бот отправляет обратно пользователю через Telegram.
-
-Как работает:
-1. Пользователь отправляет сообщение или фото в Telegram.
-2. Telegram передает это сообщение боту.
-3. Бот обрабатывает данные и отправляет запрос к OpenRouter API.
-4. API возвращает решение, которое бот отправляет обратно через Telegram пользователю.
-
-### Схема 2: Процесс обработки задачи
-Эта схема показывает, как бот обрабатывает запрос от пользователя.
-
-<mxfile host="app.diagrams.net" modified="2025-05-19T22:21:00+02:00" agent="5.0 (Windows)">
-  <diagram id="2" name="Процесс обработки задачи">
-    <mxGraphModel dx="1000" dy="600" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100">
-      <root>
-        <mxCell id="0"/>
-        <mxCell id="1" parent="0"/>
-        <mxCell id="2" value="Получение ввода (текст/фото)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="50" y="50" width="150" height="60" as="geometry"/>
-        </mxCell>
-        <mxCell id="3" value="Сообщение 'Обрабатываю...'" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="250" y="50" width="150" height="60" as="geometry"/>
-        </mxCell>
-        <mxCell id="4" value="Отправка в OpenRouter API" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="450" y="50" width="150" height="60" as="geometry"/>
-        </mxCell>
-        <mxCell id="5" value="Получение ответа от API" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="650" y="50" width="150" height="60" as="geometry"/>
-        </mxCell>
-        <mxCell id="6" value="Отправка результата пользователю" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="850" y="50" width="150" height="60" as="geometry"/>
-        </mxCell>
-        <mxCell id="7" value="Пользователь отправил задачу" style="endArrow=classic;html=1;" edge="1" parent="1" source="2" target="3">
-          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
-        </mxCell>
-        <mxCell id="8" value="Показ сообщения" style="endArrow=classic;html=1;" edge="1" parent="1" source="3" target="4">
-          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
-        </mxCell>
-        <mxCell id="9" value="Запрос к API" style="endArrow=classic;html=1;" edge="1" parent="1" source="4" target="5">
-          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
-        </mxCell>
-        <mxCell id="10" value="Получение решения" style="endArrow=classic;html=1;" edge="1" parent="1" source="5" target="6">
-          <mxGeometry width="50" height="50" relative="1" as="geometry"/>
-        </mxCell>
-      </root>
-    </mxGraphModel>
-  </diagram>
-</mxfile>
-
-Подробное описание схемы:
-- Получение ввода (текст/фото): Бот принимает сообщение от пользователя — это может быть текст (например, 2x = 4) или фото.
-- Сообщение 'Обрабатываю...': Бот отправляет пользователю сообщение "Обрабатываю фото..." или "Решаю задачу...", чтобы пользователь знал, что бот работает.
-- Отправка в OpenRouter API: Бот отправляет запрос к API с текстом или изображением.
-- Получение ответа от API: API возвращает решение в формате "Ответ: [число]\nРешение: [объяснение]".
-- Отправка результата пользователю: Бот отправляет решение пользователю через Telegram.
 
 ---
 
