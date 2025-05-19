@@ -8,6 +8,12 @@
 
 ## **Содержание**
 
+- [Выставка индивидуальных партнеров](https://github.com/00ragi00/mospolytech_LogisticAI_project/edit/main/reports/report_with_partner_DenisenkoKvakin.md#выставка-индивидуальных-партнеров)<br>
+  - [Выставка индивидуальных партнеров](https://github.com/tpAnswer4yourself/project_practice_mospolytech/blob/master/reports/report_with_partner_Nesterchuk.md#youngyandex)<br>
+  - [ОТП Банк](https://github.com/00ragi00/mospolytech_LogisticAI_project/edit/main/reports/report_with_partner_DenisenkoKvakin.md#%D0%BE%D1%82%D0%BF-%D0%B1%D0%B0%D0%BD%D0%BA)<br>
+  - [ВТБ Банк](https://github.com/00ragi00/mospolytech_LogisticAI_project/edit/main/reports/report_with_partner_DenisenkoKvakin.md#%D0%B2%D1%82%D0%B1-%D0%B1%D0%B0%D0%BD%D0%BA)<br>
+- [Требования и их важность в разработке ПО](https://github.com/00ragi00/mospolytech_LogisticAI_project/edit/main/reports/report_with_partner_DenisenkoKvakin.md#%D1%82%D1%80%D0%B5%D0%B1%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%B8-%D0%B8%D1%85-%D0%B2%D0%B0%D0%B6%D0%BD%D0%BE%D1%81%D1%82%D1%8C-%D0%B2-%D1%80%D0%B0%D0%B7%D1%80%D0%B0%D0%B1%D0%BE%D1%82%D0%BA%D0%B5-%D0%BF%D0%BE)
+
 ---
 
 ## **Выставка индивидуальных партнеров**
@@ -37,8 +43,6 @@ Young&&Yandex — образовательное направление комп
 ***
 
 ### ОТП Банк
-
-### Знакомство с ОТП Банком  
 
 Вторым партнёром, с которым мы познакомились на выставке, стал "ОТП Банк". Учитывая нашу специализацию в области системной и программной инженерии, мы проявили особый интерес к возможностям, которые предлагают IT-подразделения банка. Представители компании предоставили нам подробную информацию по следующим направлениям:  
 
