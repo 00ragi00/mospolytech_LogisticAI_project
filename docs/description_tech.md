@@ -154,7 +154,7 @@ MathBot — это Telegram-бот, разработанный для автом
 
 ### 4.3. Схема архитектуры
 
-![image](https://github.com/user-attachments/assets/dcdc45c9-7689-4890-ad76-57e2920fb8f0)
+![image](https://github.com/user-attachments/assets/22cada15-c292-4262-8e49-48d072b8dfd7)
 
 Описание: Схема показывает взаимодействие компонентов:
 - Пользователь отправляет запрос через Telegram.
@@ -163,7 +163,7 @@ MathBot — это Telegram-бот, разработанный для автом
 
 ### 4.4. Схема взаимодействия данных
 
-![image](https://github.com/user-attachments/assets/22cada15-c292-4262-8e49-48d072b8dfd7)
+![image](https://github.com/user-attachments/assets/dcdc45c9-7689-4890-ad76-57e2920fb8f0)
 
 Описание: Схема иллюстрирует поток данных от ввода пользователя до получения результата.
 
