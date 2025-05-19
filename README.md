@@ -14,9 +14,9 @@
 ## Вариативная часть задания
 
 Практическая реализация технологии[
-Выбранная технология из [репозитория](https://github.com/codecrafters-io/build-your-own-x): Build your own Bot
+Выбранная технология из [репозитория](https://github.com/codecrafters-io/build-your-own-x): Build your own Bot.
 
-Выбранная тема: How to Create a Telegram Bot using Python
+Выбранная тема: [How to Create a Telegram Bot using Python](https://www.freecodecamp.org/news/how-to-create-a-telegram-bot-using-python/).
 
 Провести исследование: изучить, как создать выбранную технологию с нуля, воспроизвести практическую часть.
 
