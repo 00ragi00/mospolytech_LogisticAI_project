@@ -12,27 +12,26 @@ from aiogram.types import InlineKeyboardMarkup, InlineKeyboardButton, ReplyKeybo
 import re
 import base64
 
-# Configure logging
+
 logging.basicConfig(level=logging.INFO)
 
-# Load environment variables
 load_dotenv(override=True)
 TELEGRAM_BOT_TOKEN = "7227343484:AAFf72XqB8VRAs1JAH-kTcSZtvsvQZpi8XI"
 OPENROUTER_API_KEY = "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"
 
-# Initialize bot and dispatcher
+
 bot = Bot(token=TELEGRAM_BOT_TOKEN)
 dp = Dispatcher()
 
-# Regex for detecting mathematical expressions
+
 MATH_REGEX = re.compile(r'[\d+\-*/=^()\[\]{}√π∞∑∫∮∝≠≤≥≈]', re.UNICODE)
 
-# Custom filter for photo content type
+
 class PhotoFilter(BaseFilter):
     async def __call__(self, message: types.Message) -> bool:
         return message.content_type == ContentType.PHOTO
 
-# Learning topics
+
 TOPICS = {
     "linear": "Решение линейных уравнений",
     "quadratic": "Решение квадратных уравнений",
@@ -43,7 +42,7 @@ TOPICS = {
     "logarithms": "Решение логарифмических уравнений"
 }
 
-# Store user states for learning mode
+
 USER_STATES = {}
 
 def clean_latex(text: str) -> str:
@@ -68,7 +67,7 @@ async def invoke_llm_api(user_content, image_data=None) -> str:
         "X-Title": os.getenv("TITLE_NAME", "Math Telegram Bot")
     }
 
-    # Updated system prompt for answer-first format
+   
     system_prompt = """Ты решаешь только математические задачи.
     Формат ответа: 
     Ответ: [число или числа, например, 2 или 1.1]
