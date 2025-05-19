@@ -1,6 +1,6 @@
 # Отчёты в бинарных форматах
 
-- **[Отчет по взаимодействию с организациями-партнерами]**(reports/report_with_partner_DenisenkoKvakin.md)
+- **[Отчет по взаимодействию с организациями-партнерами](reports/report_with_partner_DenisenkoKvakin.md)**
 
 ### Примечание
 
