@@ -115,6 +115,9 @@ MathBotProject/<br>
    
    Скопируйте этот токен, он понадобится позже.
 
+![1](https://github.com/user-attachments/assets/4647a94c-e975-4f77-872c-3336db8d7b48)
+
+
 ### Шаг 3: Получите OpenRouter API ключ
 1. Перейдите на сайт [openrouter.ai](https://openrouter.ai) и зарегистрируйтесь.
 2. После регистрации зайдите в раздел "API Keys" (Ключи API).
@@ -123,6 +126,9 @@ MathBotProject/<br>
    sk-or-v1-wergwregwrg5468fgnrfgn6869i123sdbvdsf845rdftgn
    
    Этот ключ даст доступ к модели Qwen2.5-VL 7B Instruct.
+
+![2](https://github.com/user-attachments/assets/2251f2a9-577f-4e8a-8a73-3eeb45ca02ec)
+
 
 ### Шаг 4: Настройте файл .env
 Откройте файл .env в текстовом редакторе (например, Visual Studio Code или Блокнот) и вставьте туда следующие строки:
@@ -138,11 +144,17 @@ MathBotProject/<br>
 
 Сохраните файл .env.
 
+![3](https://github.com/user-attachments/assets/be03f06f-5c0e-4b64-ad51-7af52755ce4e)
+
+
 ---
 
 ## Написание кода MathBot
 
 Теперь мы создадим файл math.py с нуля. Откройте файл math.py в текстовом редакторе и добавляйте код по частям, следуя объяснениям.
+
+![4](https://github.com/user-attachments/assets/5a31e599-76eb-4ae7-8016-2229a0d8d78a)
+
 
 ### Шаг 1: Импортируем библиотеки
 Начнем с импорта необходимых библиотек. Добавьте в начало файла math.py:
@@ -625,10 +637,10 @@ MathBotProject/<br>
 
 1. Убедитесь, что .env заполнен правильно:
    
-   TELEGRAM_BOT_TOKEN=ваш_токен_от_BotFather
-   OPENROUTER_API_KEY=ваш_ключ_от_OpenRouter
-   REFERER_URL=http://localhost
-   TITLE_NAME=Math Telegram Bot
+       TELEGRAM_BOT_TOKEN=ваш_токен_от_BotFather
+       OPENROUTER_API_KEY=ваш_ключ_от_OpenRouter
+       REFERER_URL=http://localhost
+       TITLE_NAME=Math Telegram Bot
    
 2. Проверьте работу API OpenRouter. Вы можете отправить тестовый запрос через терминал:
    
