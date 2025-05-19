@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная - LogisticAI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .welcome-text {
+            font-size: 2.5em;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .intro-text {
+            font-size: 1.5em;
+            line-height: 1.6;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .centered-image {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .image-transition {
+            max-width: 80%;
+            transition: transform 0.5s ease;
+        }
+
+            .image-transition:hover {
+                transform: scale(1.1);
+            }
+
+        .video-container {
+            display: block;
+            margin: 50px auto;
+            max-width: 80%;
+            transition: transform 0.3s ease;
+        }
+
+            .video-container:hover {
+                transform: scale(1.05);
+            }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="project-title">LogisticAI</div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="about_project.html">О проекте</a></li>
+                <li><a href="people.html">Участники</a></li>
+                <li><a href="news.html">Журнал</a></li>
+                <li><a href="resource.html">Ресурсы</a></li>
+                <li><a href="tech.html">Технология</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="welcome-text">Добро пожаловать в LogisticAI</h1>
+        <img src="images/log.png" alt="Иллюстрация логистики" class="centered-image image-transition">
+
+        <p class="intro-text"><strong>LogisticAI</strong> — это инновационная AI-платформа, разработанная для автоматизации логистики. Мы оптимизируем маршруты, улучшаем отслеживание грузов и снижаем затраты для B2B-операторов, ритейлеров и производственных компаний.</p>
+        
+        
+        <video controls class="video-container">
+            <source src="videos/logistics_intro.mp4" type="video/mp4">
+            Ваш браузер не поддерживает видео.
+        </video>
+    </main>
+
+    <footer>
+        © 2025 - Московский Политех
+    </footer>
+</body>
+</html>
