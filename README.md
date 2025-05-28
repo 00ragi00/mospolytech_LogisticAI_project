@@ -15,6 +15,7 @@
 Задание размещено в папке **task** в файле [README.md](task/README.md).
 
 **Статический сайт - [Открыть](https://00ragi00.github.io/mospolytech_LogisticAI_project/site/index.html)** 
+**Видеопрезентация проекта - [Открыть](https://drive.google.com/drive/folders/1RE_MnpnYxXVId1VDbC8_XgBxOHFtFvxS?usp=drive_link)** 
 
 ## Вариативная часть задания
 
